@@ -1,4 +1,7 @@
 name: Application CI
+env: 
+ DOCKER_USERNAME : helk1111
+ DOCKER_PASSWORD : mK@P-3k_pf6.hNA
 on: [push, pull_request]
 jobs:
   pipeline:
