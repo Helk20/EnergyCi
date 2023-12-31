@@ -36,4 +36,5 @@ jobs:
           GIT_TAG=:${GITHUB_REF#refs/tags/}
           DOCKER_TAG=${GIT_TAG#:refs/heads/main}
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-          ./mvnw -ntp jib:build -Djib.to.image=helk1111${DOCKER_TAG} -Pprod
+          ./mvnw -e -X -ntp jib:build -Djib.to.image=registry-1.docker.io/library/helk1111${DOCKER_TAG} -Pprod
+
