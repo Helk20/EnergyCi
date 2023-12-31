@@ -1,7 +1,4 @@
 name: Application CI
-env: 
- DOCKER_USERNAME : helk1111
- DOCKER_PASSWORD : mK@P-3k_pf6.hNA
 on: [push, pull_request]
 jobs:
   pipeline:
@@ -35,8 +32,8 @@ jobs:
         run: npm run java:jar:prod
       - name: Build and publish docker image
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
-        run: | 
-          docker login registry-1.docker.io -u helk1111 -p mK@P-3k_pf6.hNA
+        run: |
           GIT_TAG=:${GITHUB_REF#refs/tags/}
           DOCKER_TAG=${GIT_TAG#:refs/heads/main}
-          ./mvnw -ntp jib:build -Djib.to.image=helk1111${DOCKER_TAG} -Djib.to.auth.username="${{ secrets.DOCKER_USERNAME }}" -Djib.to.auth.password="${{ secrets.DOCKER_PASSWORD }}" -Pprod
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          ./mvnw -ntp jib:build -Djib.to.image=helk1111${DOCKER_TAG} -Pprod
