@@ -72,8 +72,8 @@ const LineChart: React.FC<LineChartProps> = ({ predictionList }) => {
 
         chartInstance.current = new Chart(ctx, {
           type: 'line',
-          data: data,
-          options: options,
+          data,
+          options,
         });
       }
     }
