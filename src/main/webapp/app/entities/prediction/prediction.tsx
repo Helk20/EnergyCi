@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { getEntities } from './prediction.reducer';
 import { Pagination } from 'react-bootstrap';
-import { VictoryChart, VictoryLine, VictoryAxis } from 'victory';
+import LineChart from './linechart'; // Import the LineChart component
 import { Link } from 'react-router-dom';
 import { TextFormat } from 'react-jhipster';
 
@@ -40,37 +40,29 @@ export const Prediction = () => {
   return (
     <div>
       <h2 id="prediction-heading" data-cy="PredictionHeading">
-        Predictions
+        Predicted Average  Temperature  of  The Day in the next Month
         <div className="d-flex justify-content-end">
-          <Button className="me-2 btn-light custom-button-refresh" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list
-          </Button>
+          
         </div>
       </h2>
 
       <div className="table-responsive">
+      
         {predictionList && predictionList.length > 0 ? (
           <div>
-            <VictoryChart
-              domainPadding={20}
-              width={600}
-              height={300}
-              scale={{ x: 'time' }}
-            >
-              <VictoryAxis
-                tickFormat={(x) => new Date(x).toLocaleDateString()}
-                label="Date"
-              />
-              <VictoryAxis dependentAxis label="Temperature (°C)" />
-              <VictoryLine
-                data={predictionList.map((prediction) => ({
-                  x: new Date(prediction.dateDebut),
-                  y: prediction.consommationPredit,
-                }))}
-              />
-            </VictoryChart>
+            <LineChart predictionList={predictionList} /> {/* Include the LineChart component */}
+            <div className="d-flex justify-content-end">
+            <Button className="me-2 btn-light custom-button-refresh" onClick={handleSyncList} disabled={loading}>
+            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list
+          </Button>
+          <br></br>
+            </div>
 
+
+            
             <Table responsive>
+           
+          <br></br>
               <thead>
                 <tr>
                   <th> Date</th>
