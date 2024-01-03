@@ -1,0 +1,15 @@
+commonLabels:
+  app.kubernetes.io/genereted-by: JHipster
+
+namespace: MyK8
+
+resources:
+  - namespace.yml
+  # Individual apps
+  - feoptimisationenergie-k8s/feoptimisationenergie-deployment.yml
+  - feoptimisationenergie-k8s/feoptimisationenergie-service.yml
+  - feoptimisationenergie-k8s/feoptimisationenergie-mysql.yml
+  - feoptimisationenergie-k8s/jwt-secret.yml
+# service discovery eureka/consul
+
+patchesJson6902:
