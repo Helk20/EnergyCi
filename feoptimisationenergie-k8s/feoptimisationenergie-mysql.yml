@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: feoptimisationenergie-mysql-pvc
-  namespace: MyK8
+  namespace: myk8
 spec:
   accessModes:
     - ReadWriteOnce
@@ -14,7 +14,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: feoptimisationenergie-mysql
-  namespace: MyK8
+  namespace: myk8
 spec:
   replicas: 1
   selector:
@@ -59,7 +59,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: feoptimisationenergie-mysql
-  namespace: MyK8
+  namespace: myk8
 spec:
   selector:
     app: feoptimisationenergie-mysql

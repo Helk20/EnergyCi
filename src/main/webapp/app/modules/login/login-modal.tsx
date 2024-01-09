@@ -43,7 +43,7 @@ const LoginModal = (props: ILoginModalProps) => {
         type="text"
         id="username"
         name="username"
-        placeholder="Username"
+        placeholder="Enter your Username "
         required
         autoComplete="off"
         data-cy="username"
@@ -59,7 +59,7 @@ const LoginModal = (props: ILoginModalProps) => {
         type="password"
         id="password"
         name="password"
-        placeholder="Password"
+        placeholder="Enter your Password"
         required
         autoComplete="off"
         data-cy="password"
